@@ -12,7 +12,8 @@ Here are the steps to create a Lucene search:
 * Call the search() method of IndexSearcher by passing the parsed query and maximum number of hits as arguments.
 * Get the Document: Once you get the hits from the search() method, you can get the documents by calling doc() method of IndexSearcher.
 Below is the steps illustrate through code:
-we will start with having a function to add documents to the index:
+
+we will start with having a function to add documents to the index.
 ```
 private static void addDoc(IndexWriter w, String title, String isbn) throws IOException {
   Document doc = new Document();
@@ -59,5 +60,6 @@ An example of the two vecotized sentences is follows if we consider our vector t
 * "I am a dog" 
 * [ 0.23, 0.13, 0.12, 0, 0.11]
 
-
+# Additional notes
+Vectorizing using Lucene has many advanatages compared to available libraries, as we can use any search engine score function for our vectorization instead of the often available tf-idf.
 
