@@ -1,2 +1,2 @@
-# frazmohs.github.io
-* hello
+## frazmohs.github.io
+Hello I am writing this thing
