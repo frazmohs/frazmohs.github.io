@@ -1,6 +1,6 @@
 # Lucene tutorial: Vectorization
 # Introduction
-Lucene is an open-source Java full-text search library that makes it easy to add search functionality to an application or website. Eventhough Lucene is often used for searching and ranking docuements, with slight modifications it can be used for feature selection and vectorization. In this tutorial I will present how to use Lucene for vectorization. I will start by explaning how to run search quearies, socre them, and move on to vectorization.
+Lucene is an open-source Java full-text search library that makes it easy to add search functionality to an application or website. Eventhough Lucene is often used for searching and ranking docuements, with slight modifications it can be used for feature selection and vectorization. In this tutorial I will present how to use Lucene for vectorization which is a lesser known wuality of lucene. I will start by explaning how to run search quearies as commonly stated, score them, and move on to vectorization.
 # Running a search query
 Here are the steps to create a Lucene search:
 * Create a QueryParser: QueryParser class parses the user entered input into Lucene understandable format query.
@@ -45,6 +45,7 @@ IndexSearcher searcher = new IndexSearcher(reader);
 TopDocs docs = searcher.search(q, hitsPerPage);
 ScoreDoc[] hits = docs.scoreDocs;
 ```
+# Vectorization
 
 
 
