@@ -21,13 +21,13 @@ private static void addDoc(IndexWriter w, String title, String isbn) throws IOEx
   w.addDocument(doc);
 }
 ```
+
 We will creat out index and scorer
+
 ```
 StandardAnalyzer analyzer = new StandardAnalyzer();
 Directory index = new ByteBuffersDirectory();
-
 IndexWriterConfig config = new IndexWriterConfig(analyzer);
-
 IndexWriter w = new IndexWriter(index, config);
 addDoc(w, "Lucene in Action", "193398817");
 addDoc(w, "Lucene for Dummies", "55320055Z");
@@ -36,6 +36,7 @@ addDoc(w, "The Art of Computer Science", "9900333X");
 w.close();
 ```
 We will create our query, run searches and display the top features (in this case 10)
+
 ```
 String querystr = args.length > 0 ? args[0] : "lucene";
 Query q = new QueryParser("title", analyzer).parse(querystr);
@@ -45,7 +46,18 @@ IndexSearcher searcher = new IndexSearcher(reader);
 TopDocs docs = searcher.search(q, hitsPerPage);
 ScoreDoc[] hits = docs.scoreDocs;
 ```
+
 # Vectorization
+Asuume that your goal is to vectorize the sentences "I am a cat" and "I am a dog". I show how to vectorize this sentence using the standard scoring method available in Lucene (Okapi BM25). The steps are as follows:
+
+* Construct a list of all available words in all docuemtns. In our case there are 5 unique words and out list would be ["I", "am". "a", "cat", "dog"].
+* Now as explained above, run each of these queries in our list among the two docuements (sentences) that we have.
+* Lucene will give us the scores for each of these queries. We will use them to vectorize our sentences.
+An example of the two vecotized sentences is follows if we consider our vector to be ["I", "am". "a", "cat", "dog"]. (The numbers are exmamples)
+* "I am a cat" 
+* [ 0.23, 0.13, 0.12, 0.11, 0]
+* "I am a dog" 
+* [ 0.23, 0.13, 0.12, 0, 0.11]
 
 
 
