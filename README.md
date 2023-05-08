@@ -24,7 +24,7 @@ private static void addDoc(IndexWriter w, String title, String isbn) throws IOEx
 }
 ```
 
-We will creat out index and scorer
+We will creat our index and scorer
 
 ```
 StandardAnalyzer analyzer = new StandardAnalyzer();
